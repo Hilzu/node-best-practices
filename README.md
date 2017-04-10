@@ -10,21 +10,25 @@ Create a `.nvmrc` file to specify what Node version your project is using. Keep 
 
     echo 6 > .nvmrc
 
+## Adhere to the twelve-factor principles
+
+To make scalable services you should adhere to the [twelve factor principles](https://12factor.net/) when possible. This is doubly more important with Node because scaling mostly happens by adding more instances.
+
+One of the principles is keeping configuration in environment variables. Locally you should use [`dotenv`](https://github.com/motdotla/dotenv) to manage your env vars.
+
 ## Use yarn and `yarn.lock` to handle dependencies
 
 Use `yarn` to install and add dependecies to your project. You can ensure that your dependencies are up-to-date by just running `yarn` in your project folder without needing to run separate `npm install`, `npm update` and `npm prune` commands.
 
 Check in `yarn.lock` file to your repo to ensure reproducable dependencies across machines. When using locked dependencies you should update the lock file regularly. You really want to have the latest minor and patch versions with bug fixes and security updates. You can use [Snyk](https://snyk.io/) to help you find vulnerable dependencies.
 
-Properly evaluate all new dependecies before adding them. The scoring system of [npms](https://npms.io/) is one way to assess if a package can be depended upon.
-
-Don't depend on global packages and add them to your project. For example you shouldn't expect developers to have a global grunt installation.
+Properly evaluate all new dependecies before adding them. The scoring system of [npms](https://npms.io/) is one way to assess if a package can be depended upon. The score is based on quality, popularity, maintenance and personalities. See the [npms documentation](https://github.com/npms-io/npms-analyzer/blob/master/docs/architecture.md#evaluators) for more information and to learn how to evaluate packages yourself.
 
 ## NODE_ENV
 
-Always set `NODE_ENV` environment variable to one of `development`, `test` or `production`. No other values should be used. If you need to differentiate between different deployed environments use a different environment variable like `APP_ENV` for that. All deployed environments should have `NODE_ENV` set to production.
+Always set `NODE_ENV` environment variable to one of `development`, `test` or `production`. No other values should be used. If you need to differentiate between different deployed environments use a different environment variable like `APP_ENV` for that. All deployed environments should have `NODE_ENV` set to `production`.
 
-## Use JS features supported by Node
+## Only use JS features supported by Node
 
 Use Node native CommonJS module system instead of ES2015 modules. Node doesn't have support for them and you shouldn't add a build to your backend just for them. Node has good support for most of other Javascript features and you can check the status of support at [node.green](http://node.green/). Using vanilla node makes debugging and development a lot smoother. You also get better stack traces with no extra effort.
 
