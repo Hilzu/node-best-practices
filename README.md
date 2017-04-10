@@ -29,14 +29,16 @@ Use [`yarn`](https://yarnpkg.com/en/) to manage your project's dependencies.
 You can ensure that your dependencies are up-to-date by just running `yarn` in your project folder without needing to run separate `npm install`, `npm update`, `npm dedupe` and `npm prune` commands.
 
 Check the `yarn.lock` file in to your repo to ensure reproducable dependencies across machines.
-When doing that you should update the lock file regularly.
+When doing that you should update, or even recreate, the lock file regularly.
 You really want to have the latest minor and patch versions with bug fixes and security updates.
-You can use [Snyk](https://snyk.io/) to help you find vulnerable dependencies.
+You can use [Snyk](https://snyk.io/) to find vulnerable dependencies.
 
 Properly evaluate all new dependecies before adding them.
 The scoring system of [npms](https://npms.io/) is one way to assess if a package can be depended upon.
 The score is based on quality, popularity, maintenance and personalities.
 See the [npms documentation](https://github.com/npms-io/npms-analyzer/blob/master/docs/architecture.md#evaluators) for more information and to learn how to evaluate packages yourself.
+
+You can use Yarn's `yarn upgrade-interactive` command to see which dependencies have new versions available – these may be breaking, so be sure to run your test suite after upgrading.
 
 ## NODE_ENV
 
