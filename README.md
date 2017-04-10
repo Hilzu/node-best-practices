@@ -51,7 +51,7 @@ All deployed environments should have `NODE_ENV` set to `production`.
 Use the CommonJS module system native to Node instead of ES2015 modules.
 Node doesn't have support for ES2015 modules and you shouldn't add a build step to your backend just for module support.
 Node 6+ has good support for most of other Javascript features – you can check the status of support at [node.green](http://node.green/).
-Using vanilla Node makes debugging and development a lot smoother. You also get better stack traces with no extra effort.
+Using vanilla Node makes debugging and development a lot smoother. You also get proper stack traces with no extra effort.
 
 ## Use strict mode in all files
 
